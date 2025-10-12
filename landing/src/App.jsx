@@ -7,14 +7,12 @@ import {
   TestimonialsSection,
   HowItWorksSection,
   CTABanner,
+  CommunityBanner,
 } from './components/Sections';
 import RegistrationForm from './components/RegistrationForm';
 import Footer from './components/Footer';
 
-/**
- * Main App Component
- * High-performance, responsive landing page for AllyTrips
- */
+
 function App() {
   return (
     <div className="App">
@@ -31,7 +29,11 @@ function App() {
         <div id="registro">
           <RegistrationForm />
         </div>
+
+        {/* 🔹 Luego la sección de comunidad */}
+        <CommunityBanner />
       </main>
+
       <Footer />
     </div>
   );

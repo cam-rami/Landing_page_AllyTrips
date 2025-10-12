@@ -3,6 +3,7 @@ import imgAllyTrips from "../assets/94091.jpg";
 import imgQueAllyTrips from "../assets/acogedor-dormitorio-con-sabanas-blancas-almohadas-azules-y-luz-de-puesta-de-sol.jpg";
 import aliadoPionero from "../assets/un-tipo-alegre-invitando-la-gente-entrar-en-su-casa.jpg";
 import viajepionero from "../assets/Viajepionero.jpg";
+import PersonaEspalda from "./../assets/persona_espaldas.png";
 
 // Hook for intersection observer animations
 const useScrollAnimation = () => {
@@ -393,6 +394,41 @@ export const HowItWorksSection = () => {
             </div>
           </div>
         </div>
+      </div>
+    </section>
+  );
+};
+
+/**
+ * NUEVA SECCIÓN — Banner de Comunidad
+ * (va debajo del formulario y antes del footer)
+ */
+export const CommunityBanner = () => {
+  return (
+    <section className="relative overflow-hidden">
+      {/* Fondo con imagen y overlay */}
+      <div
+        className="relative w-full bg-cover bg-center h-[400px] md:h-[480px] lg:h-[520px] flex flex-col justify-center items-center text-center"
+        style={{ backgroundImage: `url(${PersonaEspalda})` }}
+      >
+        <div className="absolute inset-0 bg-black/50 z-0" />
+        <div className="relative z-10 px-6 md:px-12">
+          <h2 className="text-white font-display font-bold text-3xl md:text-4xl lg:text-5xl leading-tight mb-4 drop-shadow-lg">
+            Muy pronto conocerás cómo hacer<br />
+            parte de nuestra comunidad.
+          </h2>
+          <p className="text-white/90 text-base md:text-lg max-w-2xl mx-auto drop-shadow-md">
+            En <span className="font-semibold">AllyTrips</span> creemos que viajar no se trata solo de llegar a un destino,
+            sino de inspirar cambios y dejar huella en el camino.
+          </p>
+        </div>
+      </div>
+
+      {/* Franja amarilla */}
+      <div className="bg-[#D8B34A] py-4 md:py-6 text-center -mt-[2px]">
+        <p className="font-display font-bold text-xl md:text-2xl lg:text-3xl text-[#113B7A]">
+          Explora. Inspira. Transforma
+        </p>
       </div>
     </section>
   );
