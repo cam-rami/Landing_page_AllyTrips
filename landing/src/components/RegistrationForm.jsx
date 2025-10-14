@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { supabase } from '../supabaseClient';
 
 /**
  * Registration Form Component
@@ -81,27 +82,25 @@ const RegistrationForm = () => {
   };
 
   // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // PEGA ESTA NUEVA VERSIÓN
+    const handleSubmit = async (e) => {
+      e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
+      if (!validateForm()) {
+        return;
+      }
 
-    setIsSubmitting(true);
-    setSubmitStatus(null);
+      setIsSubmitting(true);
+      setSubmitStatus(null);
 
-    try {
-      // TODO: Replace with actual API endpoint when available
-      const response = await fetch('http://localhost:8888/pre-registration', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      const { error } = await supabase
+        .from('registrations') // <-- Asegúrate que 'registrations' sea el nombre de tu tabla
+        .insert([formData]);
 
-      if (response.ok) {
+      if (error) {
+        console.error('Error al registrar en Supabase:', error);
+        setSubmitStatus('error');
+      } else {
         setSubmitStatus('success');
         setFormData({
           nombre: '',
@@ -111,18 +110,11 @@ const RegistrationForm = () => {
           whatsapp: ''
         });
 
-        // Show success message for 5 seconds
         setTimeout(() => setSubmitStatus(null), 5000);
-      } else {
-        setSubmitStatus('error');
       }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
-    } finally {
+
       setIsSubmitting(false);
-    }
-  };
+    };
 
   return (
     <section id="registro" className="section-padding bg-gray-50" ref={sectionRef}>

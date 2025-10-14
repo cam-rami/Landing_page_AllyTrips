@@ -70,8 +70,8 @@ const HeroSection = () => {
           </h2>
 
           <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-12 animate-slide-up delay-200">
-            Muy pronto descubrirás <span className="text-[#FFD84D]">hospedajes</span> y <span className="text-[#FFD84D]">experiencias</span> 
-            creados por personas y comunidades que quieren transformar la manera de viajar.
+            Muy pronto descubrirás <span className="text-[#FFD84D]">hospedajes</span> y <span className="text-[#FFD84D]">experiencias</span>
+             creados por personas y comunidades que quieren transformar la manera de viajar.
           </p>
 
           {/* 🔹 CTAs */}
